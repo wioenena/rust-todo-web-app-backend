@@ -1,0 +1,17 @@
+services:
+  db:
+    image: docker.io/library/postgres:18-trixie
+    container_name: rust_todo_web_app_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=todoapp
+      - POSTGRES_PASSWORD=todoapp
+      - POSTGRES_DB=todoapp
+      - PGDATA=/var/lib/postgresql/18/docker
+    volumes:
+      - rust_todo_web_app_db_data:/var/lib/postgresql
+
+volumes:
+  rust_todo_web_app_db_data:
